@@ -1,4 +1,4 @@
-package api.domashop.beta.user.domain.entity;
+package api.domashop.beta.user.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -15,8 +15,9 @@ import javax.persistence.*;
 @Builder
 public class User {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    // JPA는 직접할당과 자동생성으로 기본키를 매핑
+    @Id // 직접할당
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // IDENTITY : 데이터베이스에 위임(MYSQL)
     @Column(name = "user_id", unique = true, nullable = false)
     private Long userId;
 
