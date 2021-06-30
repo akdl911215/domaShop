@@ -1,5 +1,6 @@
 package api.domashop.beta.user.domain;
 
+import api.domashop.beta.common.domain.BaseEntity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -13,7 +14,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Getter
 @Builder
-public class User {
+public class User extends BaseEntity {
 
     // JPA는 직접할당과 자동생성으로 기본키를 매핑
     @Id // 직접할당

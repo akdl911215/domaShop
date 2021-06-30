@@ -1,6 +1,5 @@
 package api.domashop.beta.user.domain.dto;
 
-import api.domashop.beta.common.domain.BaseEntity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -16,7 +15,7 @@ import org.springframework.stereotype.Component;
 @Data
 @Builder
 @Log4j2
-public class UserDto extends BaseEntity {
+public class UserDto {
 
     private Long userId;
     private String username;
