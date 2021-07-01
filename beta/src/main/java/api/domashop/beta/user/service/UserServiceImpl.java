@@ -3,6 +3,7 @@ package api.domashop.beta.user.service;
 import api.domashop.beta.common.service.AbstractService;
 import api.domashop.beta.security.domain.SecurityProvider;
 import api.domashop.beta.user.domain.User;
+import api.domashop.beta.user.domain.dto.UserDto;
 import api.domashop.beta.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -24,6 +25,28 @@ public class UserServiceImpl extends AbstractService<User> implements UserServic
     private final PasswordEncoder passwordEncoder;
     private final SecurityProvider securityProvider;
     private final AuthenticationManager authenticationManager;
+
+    @Transactional
+    @Override
+    public String signup(UserDto userDto) {
+        log.info("Sign Up ServiceImpl 시작");
+
+        User entity = dtoToEntity(userDto);
+        userRepository.save(entity);
+
+        return "Signup Success";
+    }
+
+    @Override
+    public UserDto signin(UserDto uSerDto) {
+        log.info("Sign In ServiceImpl 시작");
+
+        User entity = dtoToEntity(uSerDto);
+        userRepository.signin(entity.getUsername(), entity.getPassword());
+
+
+        return null;
+    }
 
     @Override
     public String save(User user) {
@@ -56,16 +79,19 @@ public class UserServiceImpl extends AbstractService<User> implements UserServic
 
     @Override
     public String delete(User user) {
-        return null;
+        userRepository.delete(user);
+        return userRepository.findById(user.getUserId()).orElse(null) == null ? "Suceess" : "Fail";
     }
 
     @Override
     public Boolean existsById(long id) {
-        return null;
+        return userRepository.existsById(id);
     }
 
     @Override
     public void deleteAll() {
-
+        userRepository.deleteAll();
     }
+
+
 }
