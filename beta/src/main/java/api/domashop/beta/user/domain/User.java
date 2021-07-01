@@ -1,12 +1,14 @@
 package api.domashop.beta.user.domain;
 
 import api.domashop.beta.common.domain.BaseEntity;
+import api.domashop.beta.user.domain.Role.Role;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -49,6 +51,6 @@ public class User extends BaseEntity {
     @Column(name = "phoneNumber")
     private String phoneNumber;
 
-//    @ElementCollection(fetch = FetchType.EAGER)
-//    List<Role> roles;
+    @ElementCollection(fetch = FetchType.EAGER)
+    List<Role> roles;
 }
