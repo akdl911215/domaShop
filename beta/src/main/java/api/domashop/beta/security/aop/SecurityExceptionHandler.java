@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.InsufficientAuthenticationException;
 import org.springframework.security.web.access.AccessDeniedHandler;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -86,6 +87,18 @@ public class SecurityExceptionHandler { // 보안 예외 처리기
         return new ResponseEntity<>(response, HttpStatus.UNAUTHORIZED);
     }
 
-    
+    @ExceptionHandler(InsufficientAuthenticationException.class)
+    protected ResponseEntity<Messenger> handleInsufficientAuthenticationException(org.springframework.security.access.AccessDeniedException e){
+        // 불충분한 인증 예외 처리
+        log.info("handleInsufficientAuthenticationException", e);
+
+        Messenger response = Messenger.builder()
+                .code(ErrorCode.AUTHENTICATION_FAILD.getCode())
+                .message(ErrorCode.AUTHENTICATION_FAILD.getMessage())
+                .status(ErrorCode.AUTHENTICATION_FAILD.getStatus())
+                .build();
+
+        return new ResponseEntity<>(response, HttpStatus.UNAUTHORIZED);
+    }
 
 }
