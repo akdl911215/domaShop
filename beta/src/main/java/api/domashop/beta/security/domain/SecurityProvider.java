@@ -47,6 +47,7 @@ public class SecurityProvider implements AuthenticationProvider {
     protected void init(){
         secretKey = Base64.getEncoder().encodeToString(secretKey.getBytes());
     }
+
     public String createToken(String username, List<Role> roles){
         Claims claims = Jwts.claims().setSubject(username);
         claims.put("auth", roles.stream().map(s -> new SimpleGrantedAuthority(s.getAuthority()))

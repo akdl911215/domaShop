@@ -2,12 +2,13 @@ package api.domashop.beta.security.domain;
 
 
 import io.jsonwebtoken.*;
-import lombok.extern.java.Log;
+import lombok.extern.log4j.Log4j2;
+
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-@Log
+@Log4j2
 public class SecurityToken {
     private final String token;
     private final String key;

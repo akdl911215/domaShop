@@ -7,6 +7,7 @@ import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import lombok.RequiredArgsConstructor;
+
 import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +19,7 @@ import java.io.IOException;
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RequiredArgsConstructor
 @Log4j2
-@RequestMapping(value = "/users")
+@RequestMapping(value = "/users", method = {RequestMethod.GET, RequestMethod.POST})
 public class UserController {
 
     private final UserServiceImpl userService;
@@ -31,6 +32,7 @@ public class UserController {
     public ResponseEntity<String> signup(UserDto userDto) throws IOException {
         log.info("Sign Up 작동");
 
+//        return null;
         return new ResponseEntity<>(userService.signup(userDto), HttpStatus.OK);
     }
 

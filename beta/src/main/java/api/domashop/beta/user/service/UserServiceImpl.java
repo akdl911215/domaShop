@@ -6,6 +6,7 @@ import api.domashop.beta.user.domain.User;
 import api.domashop.beta.user.domain.dto.UserDto;
 import api.domashop.beta.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+
 import lombok.extern.log4j.Log4j2;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -44,7 +45,6 @@ public class UserServiceImpl extends AbstractService<User> implements UserServic
         User entity = dtoToEntity(uSerDto);
         userRepository.signin(entity.getUsername(), entity.getPassword());
 
-
         return null;
     }
 
@@ -63,11 +63,13 @@ public class UserServiceImpl extends AbstractService<User> implements UserServic
 
     @Override
     public List<User> findAll() {
+
         return userRepository.findAll();
     }
 
     @Override
     public Long count() {
+
         return userRepository.count();
     }
 
@@ -90,6 +92,7 @@ public class UserServiceImpl extends AbstractService<User> implements UserServic
 
     @Override
     public void deleteAll() {
+
         userRepository.deleteAll();
     }
 

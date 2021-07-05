@@ -3,12 +3,12 @@ package api.domashop.beta.security.aop;
 import api.domashop.beta.security.domain.Messenger;
 import api.domashop.beta.security.exception.ErrorCode;
 import api.domashop.beta.security.exception.LoginRuntimeException;
+
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.InsufficientAuthenticationException;
-import org.springframework.security.web.access.AccessDeniedHandler;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
