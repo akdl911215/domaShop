@@ -36,7 +36,7 @@ public class User extends BaseEntity {
     @Column(name = "companyName", nullable = false)
     private String companyName;
 
-    @Column(name = "companyNumber", nullable = false)
+    @Column(name = "companyNumber", nullable = false) // 사업자 번호
     private String companyNumber;
 
     @Column(name = "address")
@@ -45,7 +45,7 @@ public class User extends BaseEntity {
     @Column(name = "email", nullable = false)
     private String email;
 
-    @Column(name = "number", nullable = false)
+    @Column(name = "number", nullable = false) // 일반전화
     private String number;
 
     @Column(name = "phoneNumber")
